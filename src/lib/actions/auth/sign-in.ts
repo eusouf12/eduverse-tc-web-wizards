@@ -2,12 +2,12 @@ import { useMutation } from "@tanstack/react-query";
 import instance from "..";
 
 interface LoginData {
-  username: string;
+  email: string;
   password: string;
 }
 
 const login = (data: LoginData) => {
-  return instance.post("/user/login", { ...data });
+  return instance.post("/users/login", { ...data });
 };
 
 export const useLogin = () => {

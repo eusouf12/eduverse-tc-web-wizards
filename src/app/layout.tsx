@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Outfit } from "next/font/google";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 import "./globals.css";
+import { CookiesProvider } from "next-client-cookies/server";
+import { ThemeProvider } from "@mui/material";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import ClientLayout from "./layout.client";
+import muiTheme from "./themes/mui";
+import { UserProvider } from "./hooks/use-user";
 
 const fontSans = Outfit({
   // Google Font
@@ -32,7 +39,24 @@ export default function RootLayout({
       <body
         className={`${fontSans.className} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* 3rd party cookies provider to maintain cookies */}
+        <CookiesProvider>
+          {/* Wrapped with client layout */}
+          {/* Mui Serverside theme caching */}
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={muiTheme}>
+              {/* Antd CSS in JS */}
+              <AntdRegistry>
+                <ClientLayout>
+                  <UserProvider>
+                    {/* Children Route */}
+                    {children}
+                  </UserProvider>
+                </ClientLayout>
+              </AntdRegistry>
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </CookiesProvider>
       </body>
     </html>
   );
