@@ -1,5 +1,4 @@
 import Image from "next/image";
-import ButtonGroup from "../../../../Clients/POS/shopkeepers-admin/src/app/_components/not-found-buttons/index.button";
 
 export default function NotFound() {
   return (
@@ -12,7 +11,6 @@ export default function NotFound() {
         priority
       />
       <h2 className="text-xl font-semibold text-primary-500">Page Not Found</h2>
-      <ButtonGroup />
     </div>
   );
 }
