@@ -52,7 +52,6 @@ export function SignForm() {
       // Setting cookies
       setUser(res.response.data);
       authService.setToken(res.response.token);
-      cookies.set("refresh_token", res.response.token);
       localStorage.setItem("user_data", JSON.stringify(res.response.data));
       reset();
       // Generating Toast
