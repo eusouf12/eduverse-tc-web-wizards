@@ -16,18 +16,20 @@ const updateUserSchema = z.object({
       required_error: "Email is required.",
     })
     .email({ message: "Invalid email address." }),
-  mobile: z
+  phone: z
     .string()
-    .min(11, "Mobile number must be at least 11 characters.")
-    .max(14, "Mobile number cannot exceed 14 characters.")
+    .min(11, "phone number must be at least 11 characters.")
+    .max(14, "phone number cannot exceed 14 characters.")
     .regex(
       /^(?:\+8801[3-9][0-9]{8}|01[3-9][0-9]{8})$/,
       "Invalid Bangladeshi mobile number."
-    ),
+    )
+    .optional(),
   user_role: z
     .string()
     .min(1, { message: "role must be at least 1." })
     .max(255, { message: "role must be at most 255." }),
+  address: z.string().optional(),
 });
 
 export type UpdateUserFormValues = z.infer<typeof updateUserSchema>;

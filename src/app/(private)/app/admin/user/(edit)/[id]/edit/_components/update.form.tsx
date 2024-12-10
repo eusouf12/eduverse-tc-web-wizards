@@ -4,8 +4,6 @@ import React, { useEffect } from "react";
 import { Button, DatePicker, Form, Input, message, Select } from "antd";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import moment from "moment";
-import dayjs from "dayjs";
 import handleResponse from "@/lib/handle-response";
 import updateUserSchema, { UpdateUserFormValues } from "./update.schema";
 import { useParams } from "next/navigation";
@@ -36,10 +34,12 @@ const UpdateForm: React.FC = () => {
     if (!user) return;
     if ((user && !isLoading) || (!isDirty && isFetchedAfterMount)) {
       reset({
-        first_name: user.data.first_name,
-        last_name: user.data.last_name,
-        email: user.data.email,
-        user_role: user.data.user_role,
+        first_name: user?.data?.data?.first_name,
+        last_name: user?.data?.data?.last_name,
+        email: user?.data?.data?.email,
+        user_role: user?.data?.data?.user_role,
+        phone: user?.data?.data?.phone,
+        address: user?.data?.data?.address,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -78,8 +78,7 @@ const UpdateForm: React.FC = () => {
         <h1 className="text-lg font-semibold text-primary-400">Update User</h1>
         <p className="max-w-md text-center">
           This page allows administrators to input and update essential
-          information about an user, such as personal details, job role, and
-          contact information, for organizational record-keeping.
+          information about an user, such as personal details, role.
         </p>
       </div>
 
@@ -176,25 +175,19 @@ const UpdateForm: React.FC = () => {
               </>
             )}
           />
-
           <Controller
             control={control}
-            name={"mobile"}
+            name={"phone"}
             render={({
               field: { onChange, onBlur, value },
               fieldState: { error },
             }) => (
               <>
-                <Item<UpdateUserFormValues>
-                  label="Phone Number"
-                  required
-                  tooltip="You can't change phone number."
-                >
+                <Item<UpdateUserFormValues> label="Phone Number">
                   <Item noStyle>
                     <Input
                       placeholder="Phone Number"
                       size="large"
-                      readOnly
                       onChange={onChange}
                       onBlur={onBlur}
                       value={value}
@@ -204,6 +197,66 @@ const UpdateForm: React.FC = () => {
                   <ErrorList
                     className="text-red-500"
                     fieldId="mobile"
+                    errors={[error?.message]}
+                  />
+                </Item>
+              </>
+            )}
+          />
+          <Controller
+            control={control}
+            name={"user_role"}
+            render={({
+              field: { onChange, onBlur, value },
+              fieldState: { error },
+            }) => (
+              <Item<UpdateUserFormValues> label="Role" required>
+                <Item noStyle>
+                  <Select
+                    placeholder="Select a Role"
+                    size="large"
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    value={value}
+                    showSearch
+                    allowClear
+                    options={[
+                      { label: "Admin", value: "admin" },
+                      { label: "Faculty", value: "faculty" },
+                      { label: "Student", value: "student" },
+                    ]}
+                  />
+                </Item>
+                <ErrorList
+                  className="text-red-500"
+                  fieldId="user_role"
+                  errors={[error?.message]}
+                />
+              </Item>
+            )}
+          />
+          <Controller
+            control={control}
+            name={"address"}
+            render={({
+              field: { onChange, onBlur, value },
+              fieldState: { error },
+            }) => (
+              <>
+                <Item<UpdateUserFormValues> label="Address">
+                  <Item noStyle>
+                    <Input.TextArea
+                      placeholder="Address"
+                      size="large"
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      value={value}
+                      status={error ? "error" : ""}
+                    />
+                  </Item>
+                  <ErrorList
+                    className="text-red-500"
+                    fieldId="address"
                     errors={[error?.message]}
                   />
                 </Item>

@@ -10,7 +10,6 @@ import { useGetuserList } from "@/lib/actions/user/list.get";
 export default function UsersTable() {
   const router = useRouter();
   const { data, isLoading } = useGetuserList();
-  console.log(data);
   const rows: GridRowsProp = useMemo(() => data?.data?.data || [], [data]);
   const pagination: {
     count: number;

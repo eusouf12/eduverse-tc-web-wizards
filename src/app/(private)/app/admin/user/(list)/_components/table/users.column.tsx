@@ -63,7 +63,7 @@ const columns: GridColDef[] = [
         disableFocusRipple
         className="hover: bg-transparent"
         icon={
-          <Link href={`/user/${params.id}`}>
+          <Link href={`/app/admin/user/${params.id}`}>
             <Button type="dashed" size={"small"}>
               View
             </Button>
@@ -74,7 +74,7 @@ const columns: GridColDef[] = [
       <GridActionsCellItem
         key={params.id}
         icon={
-          <Link href={`/user/${params.id}/edit`}>
+          <Link href={`/app/admin/user/${params.id}/edit`}>
             <FiEdit2 className="text-lg" />
           </Link>
         }
