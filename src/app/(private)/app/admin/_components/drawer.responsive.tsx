@@ -25,14 +25,14 @@ const ResponsiveDrawer: React.FC = () => {
       <Button
         type="dashed"
         icon={<LuMenu />}
-        className="fixed hidden right-8 top-5 z-50 shadow"
+        className="relative mt-10 ml-10 shadow lg:!hidden"
         onClick={onClose}
       />
       <Drawer
         anchor={"bottom"}
         open={open}
         onClose={onClose}
-        className="hidden lg:block"
+        className="lg:hidden block"
         PaperProps={{
           className: "flex-col-reverse p-4 flex-col",
         }}

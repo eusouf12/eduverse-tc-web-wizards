@@ -1,17 +1,8 @@
 import { MenuProps } from "antd";
 
 //Icons import
-import {
-  LuGitBranch,
-  LuLayoutDashboard,
-  LuLogOut,
-  LuSettings,
-  LuTags,
-  LuUsers,
-} from "react-icons/lu";
-import { PiPackage } from "react-icons/pi";
-import { TbCategory2, TbReportAnalytics } from "react-icons/tb";
-import { IoFileTrayStacked } from "react-icons/io5";
+import { LuLayoutDashboard, LuUsers } from "react-icons/lu";
+import { TbReportAnalytics } from "react-icons/tb";
 
 type MenuItem = Required<MenuProps>["items"][number];
 

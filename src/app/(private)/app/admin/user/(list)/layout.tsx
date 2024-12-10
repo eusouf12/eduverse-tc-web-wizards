@@ -1,4 +1,5 @@
 import { Divider } from "antd";
+import ToolbarComponent from "./_components/toolbar/toolbar.component";
 // import StatsComponent from "./_components/stats/stats.component";
 // import ToolbarComponent from "./_components/toolbar/toolbar.component";
 // import LayoutTabs from "./_components/navigation/users.tabs";
@@ -19,7 +20,7 @@ export default function ListLayout({
       </section>
       {/* <StatsComponent /> */}
       {/* <LayoutTabs /> */}
-      {/* <ToolbarComponent /> */}
+      <ToolbarComponent />
       <section>{children}</section>
     </>
   );

@@ -16,8 +16,8 @@ export default function PrivateLayout({
 
   return (
     <div className="flex h-screen flex-col lg:flex-row lg:gap-6 lg:bg-slate-200 lg:p-6">
-      {/* <ResponsiveDrawer /> */}
-      <aside className="relative hidden max-w-[360px] flex-[0.40] flex-col-reverse overflow-hidden rounded-md bg-white p-4 pb-0 shadow-md shadow-slate-300 lg:flex lg:flex-col">
+      <ResponsiveDrawer />
+      <aside className="relative hidden max-w-[300px] flex-[0.40] flex-col-reverse overflow-hidden rounded-md bg-white p-4 pb-0 shadow-md shadow-slate-300 lg:flex lg:flex-col">
         <AppDrawer />
       </aside>
 

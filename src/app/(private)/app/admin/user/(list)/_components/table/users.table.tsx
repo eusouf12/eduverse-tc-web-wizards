@@ -30,17 +30,7 @@ export default function UsersTable() {
         loading={isLoading}
         rowCount={pagination?.count || 0}
         getRowId={(row) => row._id}
-        // paginationMeta={{
-        //   hasNextPage: !!pagination?.next,
-        // }}
-        // paginationModel={{
-        //   page: page - 1,
-        //   pageSize: 10,
-        // }}
-        // onPaginationModelChange={(model) => {
-        //   setPage(model.page + 1);
-        // }}
-        onRowDoubleClick={(row) => router.push(`/users/${row.id}`)}
+        onRowDoubleClick={(row) => router.push(`/user/${row.id}`)}
       />
     </div>
   );

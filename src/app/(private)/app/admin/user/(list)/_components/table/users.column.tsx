@@ -7,18 +7,18 @@ import Link from "next/link";
 import { FiEdit2 } from "react-icons/fi";
 
 const columns: GridColDef[] = [
-  {
-    field: "_id",
-    headerName: "ID",
-    description: "Employee's ID",
-    headerAlign: "center",
-    align: "center",
-    width: 50,
-  },
+  // {
+  //   field: "_id",
+  //   headerName: "ID",
+  //   description: "Employee's ID",
+  //   headerAlign: "center",
+  //   align: "center",
+  //   width: 200,
+  // },
   {
     headerName: "User Name",
     field: "name",
-    minWidth: 200,
+    minWidth: 100,
     flex: 1,
     renderCell(params) {
       return [params.row.first_name, params.row.last_name].join(" ") || "";
@@ -33,20 +33,18 @@ const columns: GridColDef[] = [
   {
     headerName: "Role",
     field: "user_role",
-    minWidth: 200,
+    minWidth: 100,
+    flex: 1,
+  },
+  {
+    headerName: "Status",
+    field: "is_active",
+    minWidth: 100,
     flex: 1,
   },
   {
     headerName: "Last Updated",
-    field: "updated_at",
-    minWidth: 200,
-    valueGetter(value) {
-      return moment(value).format("lll");
-    },
-  },
-  {
-    headerName: "Created At",
-    field: "created_at",
+    field: "updatedAt",
     minWidth: 200,
     valueGetter(value) {
       return moment(value).format("lll");
@@ -56,7 +54,7 @@ const columns: GridColDef[] = [
     field: "actions",
     type: "actions",
     flex: 1,
-    minWidth: 250,
+    minWidth: 150,
     getActions: (params) => [
       <GridActionsCellItem
         key={params.id}
