@@ -71,34 +71,22 @@ export default function UserDetails() {
         }}
         items={[
           {
-            key: "user_role",
-            label: "User Role",
+            key: "start_date",
+            label: "Start Date",
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.data?.user_role || <NoData />}
-              </Skeleton>
-            ),
-          },
-          {
-            key: "joining_date",
-            label: "Joining Date",
-            children: (
-              <Skeleton loading={isLoading} active paragraph={false}>
-                {moment(data?.data?.data?.createdAt).format("lll") || (
+                {moment(data?.data?.data?.start_date).format("lll") || (
                   <NoData />
                 )}
               </Skeleton>
             ),
           },
           {
-            key: "status",
-            label: "Status",
+            key: "end_date",
+            label: "End Date",
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
-                <Badge
-                  status={data?.data?.data?.is_active ? "success" : "error"}
-                  text={data?.data?.data?.is_active ? "Active" : "Inactive"}
-                />
+                {moment(data?.data?.data?.end_date).format("lll") || <NoData />}
               </Skeleton>
             ),
           },
@@ -119,8 +107,8 @@ export default function UserDetails() {
         }}
         items={[
           {
-            key: "address",
-            label: "Address",
+            key: "description",
+            label: "Description",
             contentStyle: {
               whiteSpace: "pre-line",
             },
@@ -134,7 +122,7 @@ export default function UserDetails() {
             },
             children: (
               <Skeleton loading={isLoading} active paragraph title={false}>
-                {data?.data?.data?.address || <NoData />}
+                {data?.data?.data?.description || <NoData />}
               </Skeleton>
             ),
           },
