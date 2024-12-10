@@ -10,7 +10,7 @@ export default function UpdateToolbar() {
 
   return (
     <div>
-      <Link href={`/users/${id}/edit`}>
+      <Link href={`/app/admin/user/${id}/edit`}>
         <Button
           type="dashed"
           icon={<AiOutlineEdit />}
@@ -18,11 +18,6 @@ export default function UpdateToolbar() {
         >
           Update
         </Button>
-        <Button
-          type="dashed"
-          icon={<AiOutlineEdit />}
-          className="inline-flex md:hidden"
-        />
       </Link>
     </div>
   );

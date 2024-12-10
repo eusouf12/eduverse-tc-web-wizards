@@ -3,6 +3,7 @@
 import NoData from "@/app/_components/no-data/index.components";
 import { useGetUserById } from "@/lib/actions/user/details.get";
 import { Badge, Descriptions, Skeleton } from "antd";
+import moment from "moment";
 import { useParams } from "next/navigation";
 
 export default function UserDetails() {
@@ -30,7 +31,7 @@ export default function UserDetails() {
             label: "First Name",
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.first_name || <NoData />}
+                {data?.data?.data?.first_name || <NoData />}
               </Skeleton>
             ),
           },
@@ -39,7 +40,7 @@ export default function UserDetails() {
             label: "Last Name",
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.last_name || <NoData />}
+                {data?.data?.data?.last_name || <NoData />}
               </Skeleton>
             ),
           },
@@ -48,7 +49,7 @@ export default function UserDetails() {
             label: "Email",
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.email || <NoData />}
+                {data?.data?.data?.email || <NoData />}
               </Skeleton>
             ),
           },
@@ -57,7 +58,7 @@ export default function UserDetails() {
             label: "Phone Number",
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.mobile || <NoData />}
+                {data?.data?.data?.phone || <NoData />}
               </Skeleton>
             ),
           },
@@ -78,20 +79,11 @@ export default function UserDetails() {
         }}
         items={[
           {
-            key: "job_title",
-            label: "Job Title",
+            key: "user_role",
+            label: "User Role",
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.job_title || <NoData />}
-              </Skeleton>
-            ),
-          },
-          {
-            key: "placement",
-            label: "Placement",
-            children: (
-              <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.placement || <NoData />}
+                {data?.data?.data?.user_role || <NoData />}
               </Skeleton>
             ),
           },
@@ -100,7 +92,9 @@ export default function UserDetails() {
             label: "Joining Date",
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.joining_date || <NoData />}
+                {moment(data?.data?.data?.createdAt).format("lll") || (
+                  <NoData />
+                )}
               </Skeleton>
             ),
           },
@@ -110,8 +104,8 @@ export default function UserDetails() {
             children: (
               <Skeleton loading={isLoading} active paragraph={false}>
                 <Badge
-                  status={data?.data?.user?.is_active ? "success" : "error"}
-                  text={data?.data?.user?.is_active ? "Active" : "Inactive"}
+                  status={data?.data?.data?.is_active ? "success" : "error"}
+                  text={data?.data?.data?.is_active ? "Active" : "Inactive"}
                 />
               </Skeleton>
             ),
@@ -133,24 +127,6 @@ export default function UserDetails() {
         }}
         items={[
           {
-            key: "district",
-            label: "City/State",
-            children: (
-              <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.district || <NoData />}
-              </Skeleton>
-            ),
-          },
-          {
-            key: "secondary_mobile",
-            label: "Secondary Phone Number",
-            children: (
-              <Skeleton loading={isLoading} active paragraph={false}>
-                {data?.data?.secondary_mobile || <NoData />}
-              </Skeleton>
-            ),
-          },
-          {
             key: "address",
             label: "Address",
             contentStyle: {
@@ -166,7 +142,7 @@ export default function UserDetails() {
             },
             children: (
               <Skeleton loading={isLoading} active paragraph title={false}>
-                {data?.data?.address || <NoData />}
+                {data?.data?.data?.address || <NoData />}
               </Skeleton>
             ),
           },

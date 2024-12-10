@@ -12,6 +12,7 @@ export default function UserDetailsCard() {
   const { id } = useParams<{ id: string }>();
 
   const { data, isLoading } = useGetUserById(id);
+  console.log(data);
   return (
     <>
       <div className="mx-auto flex max-w-6xl flex-row items-start justify-between gap-4 p-4">
@@ -26,7 +27,7 @@ export default function UserDetailsCard() {
           <Avatar
             className="h-16 w-16 text-xl font-bold"
             {...stringAvatar(
-              `${data?.data?.first_name} ${data?.data?.last_name}`
+              `${data?.data?.data?.first_name} ${data?.data?.data?.last_name}`
             )}
           />
         </Skeleton>
@@ -39,37 +40,16 @@ export default function UserDetailsCard() {
             paragraph={false}
             className="max-w-xs"
           >
-            <h1 className="flex flex-row items-center gap-2 text-xl font-semibold">
+            <h1 className="flex flex-col items-start  text-xl font-semibold">
               <span>
-                {data?.data?.first_name} {data?.data?.last_name}
-              </span>{" "}
+                {data?.data?.data?.first_name} {data?.data?.data?.last_name}
+              </span>
               <Chip
                 size="small"
-                className="hidden md:inline-flex"
-                label={data?.data?.role || "No Role Assigned"}
+                className="capitalize"
+                label={data?.data?.data?.user_role || "No Role Assigned"}
               />
             </h1>
-          </Skeleton>
-
-          <Skeleton
-            loading={isLoading}
-            active
-            paragraph={false}
-            className="max-w-sm"
-          >
-            <p className="text-sm text-gray-500">
-              {data?.data?.user?.username || "No Role Assigned"}
-            </p>
-          </Skeleton>
-          <Skeleton
-            loading={isLoading}
-            active
-            paragraph={false}
-            className="max-w-sm"
-          >
-            <p className="text-sm capitalize text-gray-500">
-              {data?.data?.job_title || "No Designation Assigned"}
-            </p>
           </Skeleton>
         </div>
         <ToolbarComponent />

@@ -5,6 +5,7 @@ import moment from "moment";
 import { Button } from "antd";
 import Link from "next/link";
 import { FiEdit2 } from "react-icons/fi";
+import DeleteButton from "./action_items/delete.button";
 
 const columns: GridColDef[] = [
   // {
@@ -80,11 +81,11 @@ const columns: GridColDef[] = [
         }
         label="Edit"
       />,
-      //   <GridActionsCellItem
-      //     key={params.id}
-      //     icon={<DeleteButton id={params.id} />}
-      //     label="Delete"
-      //   />,
+      <GridActionsCellItem
+        key={params.id}
+        icon={<DeleteButton id={params.id} />}
+        label="Delete"
+      />,
     ],
   },
 ];
