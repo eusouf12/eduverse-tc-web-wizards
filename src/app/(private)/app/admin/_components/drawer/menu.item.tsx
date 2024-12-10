@@ -28,46 +28,15 @@ export const items: MenuItem[] = [
       },
     ],
   },
-  {
-    key: "inventory",
-    label: "Inventory",
-    type: "group",
-    children: [
-      {
-        key: "products",
-        label: "Products",
-        icon: <PiPackage style={{ fontSize: "20px" }} />,
-      },
-      {
-        key: "categories",
-        label: "Category",
-        icon: <TbCategory2 style={{ fontSize: "20px" }} />,
-      },
-      {
-        key: "brands",
-        label: "Brands",
-        icon: <LuTags style={{ fontSize: "20px" }} />,
-      },
-      {
-        key: "stock-location",
-        label: "Stock Location",
-        icon: <LuGitBranch style={{ fontSize: "20px" }} />,
-      },
-      {
-        key: "assets",
-        label: "Assets",
-        icon: <IoFileTrayStacked style={{ fontSize: "20px" }} />,
-      },
-    ],
-  },
+
   {
     key: "organization",
     label: "Organization",
     type: "group",
     children: [
       {
-        key: "employees",
-        label: "Employees",
+        key: "faculty",
+        label: "Faculty",
         icon: <LuUsers style={{ fontSize: "18px" }} />,
       },
       {
@@ -84,15 +53,9 @@ export const items: MenuItem[] = [
     type: "group",
     children: [
       {
-        key: "settings",
-        label: "Settings",
-        icon: <LuSettings style={{ fontSize: "20px" }} />,
-      },
-      {
-        key: "signout",
-        label: "Signout",
-        danger: true,
-        icon: <LuLogOut style={{ fontSize: "20px" }} />,
+        key: "user",
+        label: "User",
+        icon: <LuUsers style={{ fontSize: "18px" }} />,
       },
     ],
   },

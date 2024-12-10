@@ -1,40 +1,40 @@
-'use client';
-import { Drawer } from '@mui/material';
-import { Button } from 'antd';
-import React from 'react';
-import { LuMenu } from 'react-icons/lu';
-import AppDrawer from './drawer/drawer.component';
-import { useSelectedLayoutSegments } from 'next/navigation';
+"use client";
+import { Drawer } from "@mui/material";
+import { Button } from "antd";
+import React from "react";
+import { LuMenu } from "react-icons/lu";
+import AppDrawer from "./drawer/drawer.component";
+import { useSelectedLayoutSegments } from "next/navigation";
 
 const ResponsiveDrawer: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const onClose = () => setOpen((o) => !o);
 
   // On segments change, close the drawer
-  const [prevSegment, setPrevSegment] = React.useState(''); // Store the previous segment
+  const [prevSegment, setPrevSegment] = React.useState(""); // Store the previous segment
   const segments = useSelectedLayoutSegments();
   React.useEffect(() => {
-    if (segments.join('--') === prevSegment && open) return; // No change
+    if (segments.join("--") === prevSegment && open) return; // No change
     setOpen(false); // Close the drawer
-    setPrevSegment(segments.join('--')); // Update the prev segment
+    setPrevSegment(segments.join("--")); // Update the prev segment
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [segments]);
 
   return (
     <>
       <Button
-        type='dashed'
+        type="dashed"
         icon={<LuMenu />}
-        className='fixed right-8 top-5 z-50 inline-flex shadow lg:hidden'
+        className="fixed hidden right-8 top-5 z-50 shadow"
         onClick={onClose}
       />
       <Drawer
-        anchor={'bottom'}
+        anchor={"bottom"}
         open={open}
         onClose={onClose}
-        className='lg:hidden'
+        className="hidden lg:block"
         PaperProps={{
-          className: 'flex-col-reverse p-4 flex-col',
+          className: "flex-col-reverse p-4 flex-col",
         }}
       >
         <AppDrawer onClose={onClose} />

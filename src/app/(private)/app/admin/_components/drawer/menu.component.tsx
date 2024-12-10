@@ -16,10 +16,10 @@ export default function Menu() {
       mode="inline"
       items={items}
       _internalRenderMenuItem={(originNode, menuItemProps) => (
-        <Link href={`/${menuItemProps.eventKey}`}>{originNode}</Link>
+        <Link href={`/app/admin/${menuItemProps.eventKey}`}>{originNode}</Link>
       )}
       _internalRenderSubMenuItem={(originNode, menuItemProps) => (
-        <Link href={`/${menuItemProps.eventKey}`}>{originNode}</Link>
+        <Link href={`/app/admin/${menuItemProps.eventKey}`}>{originNode}</Link>
       )}
     />
   );

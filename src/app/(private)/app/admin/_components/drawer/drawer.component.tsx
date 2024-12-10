@@ -1,18 +1,23 @@
 "use client";
 
 import Menu from "./menu.component";
-import Link from "next/link";
-import { Button, Divider } from "antd";
-import { LuSettings } from "react-icons/lu";
+import { Button, Divider, message } from "antd";
 import { Avatar, ListItemText } from "@mui/material";
-import { IoClose } from "react-icons/io5";
+import { IoClose, IoLogOut } from "react-icons/io5";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/app/hooks/use-user";
 import { stringAvatar } from "@/lib/string-avatar";
+import { authService } from "@/lib/auth.service";
+import { useRouter } from "next/navigation";
 
 export default function AppDrawer({ onClose }: { onClose?: () => void }) {
   const { user } = useUser();
+  const router = useRouter();
 
+  const logout = async () => {
+    authService.removeToken();
+    router.refresh();
+  };
   return (
     <>
       <div className="flex-1 overflow-y-auto">
@@ -46,9 +51,12 @@ export default function AppDrawer({ onClose }: { onClose?: () => void }) {
         {onClose !== undefined ? (
           <Button type="dashed" icon={<IoClose />} onClick={onClose} />
         ) : (
-          <Link href={"/settings"}>
-            <Button icon={<LuSettings />} type="dashed" />
-          </Link>
+          <Button
+            onClick={() => logout()}
+            icon={<IoLogOut />}
+            type="default"
+            danger
+          />
         )}
       </div>
     </>
