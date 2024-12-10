@@ -17,20 +17,19 @@ const RoleChecker = ({
   useEffect(() => {
     if (!user) return;
 
-    if (
-      user.user_role === "admin" &&
-      !pathname.startsWith("/app/admin/dashbaord")
-    ) {
-      router.replace("/app/admin/dashboard"); // Redirect to a generic unauthorized page
-    }
+    const roleRoutes = {
+      admin: "/app/admin",
+      faculty: "/app/faculty",
+      student: "/app/student",
+    };
 
-    if (user.user_role === "faculty" && !pathname.startsWith("/app/faculty")) {
-      router.replace("/app/faculty");
+    if (user.user_role in roleRoutes) {
+      const targetRoute = roleRoutes[user.user_role as keyof typeof roleRoutes];
+      if (targetRoute && !pathname.startsWith(targetRoute)) {
+        router.replace(targetRoute);
+      }
     }
-    if (user.user_role === "student" && !pathname.startsWith("/app/student")) {
-      router.replace("/app/student");
-    }
-  }, [user]);
+  }, [user, pathname]);
   return <>{children}</>;
 };
 

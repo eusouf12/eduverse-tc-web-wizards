@@ -54,7 +54,7 @@ export const items: MenuItem[] = [
     children: [
       {
         key: "user",
-        label: "User",
+        label: "All Users",
         icon: <LuUsers style={{ fontSize: "18px" }} />,
       },
     ],
