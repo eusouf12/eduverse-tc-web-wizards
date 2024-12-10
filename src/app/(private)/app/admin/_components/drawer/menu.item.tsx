@@ -26,29 +26,11 @@ export const items: MenuItem[] = [
     label: "Organization",
     type: "group",
     children: [
-      // {
-      //   key: "faculty",
-      //   label: "Faculty",
-      //   icon: <LuUsers style={{ fontSize: "18px" }} />,
-      // },
       {
         key: "courses",
         label: "Courses",
         icon: <IoMdBookmarks style={{ fontSize: "18px" }} />,
       },
-      {
-        key: "reports",
-        label: "Reports",
-        icon: <TbReportAnalytics style={{ fontSize: "20px" }} />,
-      },
-    ],
-  },
-
-  {
-    key: "user",
-    label: "User",
-    type: "group",
-    children: [
       {
         key: "user",
         label: "All Users",

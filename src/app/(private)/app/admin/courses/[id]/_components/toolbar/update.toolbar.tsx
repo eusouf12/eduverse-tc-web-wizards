@@ -10,7 +10,7 @@ export default function UpdateToolbar() {
 
   return (
     <div>
-      <Link href={`/app/admin/user/${id}/edit`}>
+      <Link href={`/app/admin/courses/${id}/edit`}>
         <Button
           type="dashed"
           icon={<AiOutlineEdit />}
