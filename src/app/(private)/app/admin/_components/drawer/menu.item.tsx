@@ -1,4 +1,5 @@
 import { MenuProps } from "antd";
+import { IoMdBookmarks } from "react-icons/io";
 
 //Icons import
 import { LuLayoutDashboard, LuUsers } from "react-icons/lu";
@@ -25,10 +26,15 @@ export const items: MenuItem[] = [
     label: "Organization",
     type: "group",
     children: [
+      // {
+      //   key: "faculty",
+      //   label: "Faculty",
+      //   icon: <LuUsers style={{ fontSize: "18px" }} />,
+      // },
       {
-        key: "faculty",
-        label: "Faculty",
-        icon: <LuUsers style={{ fontSize: "18px" }} />,
+        key: "courses",
+        label: "Courses",
+        icon: <IoMdBookmarks style={{ fontSize: "18px" }} />,
       },
       {
         key: "reports",

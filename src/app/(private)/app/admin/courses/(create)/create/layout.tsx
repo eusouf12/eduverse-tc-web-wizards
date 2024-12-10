@@ -1,7 +1,7 @@
+import GoBack from "@/app/_components/go-back/index.button";
 import { Divider } from "antd";
-import StatsComponent from "./stats/stats.component";
 
-export default function DashboardLayout({
+export default function CreateLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -9,12 +9,12 @@ export default function DashboardLayout({
   return (
     <>
       <section>
-        <div className="p-5 pb-0">
-          <h1 className="text-xl font-semibold">Dashboard</h1>
+        <div className="flex flex-row items-center justify-between p-5 pb-0">
+          <GoBack />
+          <div></div>
         </div>
         <Divider />
       </section>
-      <StatsComponent />
       <section>{children}</section>
     </>
   );
